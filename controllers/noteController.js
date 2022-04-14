@@ -63,7 +63,7 @@ exports.createNote = asyncHandler(async (req, res, next) => {
     });
 
 
-    res.status(201).json(note)
+    res.status(201).json({ msg: 'Note created' })
 
 
 })
