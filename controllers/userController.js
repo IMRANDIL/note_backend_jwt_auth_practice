@@ -137,4 +137,25 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
     })
 
 
+});
+
+
+
+
+
+
+//getme.....my data...after verifying...
+
+
+exports.getMe = asyncHandler(async (req, res) => {
+    //get the data from the req.user ...
+
+    // const verifiedUser = await User.findById(req.user.id);...no need to go  to  database..
+
+    const { id, name } = req.user;
+
+
+    //now send the response....
+
+    res.status(200).json({ userId: id, userName: name })
 })

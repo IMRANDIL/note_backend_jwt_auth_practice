@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { registerUser, loginUser } = require('../controllers/userController');
+const { registerUser, loginUser, getMe } = require('../controllers/userController');
+
+const protectRoute = require('../middlewares/protectAuth')
 
 //Register User......
 
@@ -7,7 +9,13 @@ const { registerUser, loginUser } = require('../controllers/userController');
 router.post('/register', registerUser);
 
 
-router.post('/login', loginUser)
+router.post('/login', loginUser);
+
+
+//get the user info after verifying by our middleware...protectroute...
+
+
+router.get('/me', protectRoute, getMe)
 
 
 
