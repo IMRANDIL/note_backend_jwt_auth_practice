@@ -66,4 +66,75 @@ exports.createNote = asyncHandler(async (req, res, next) => {
     res.status(201).json({ msg: 'Note created' })
 
 
+});
+
+
+
+//deletes note now...specific one....
+
+
+
+exports.deleteSpecNote = asyncHandler(async (req, res, next) => {
+    //extract the note id from the params....
+
+    const { id } = req.params;
+
+    //now find the note in the database...
+
+    const note = await Note.findByIdAndDelete(id);
+
+    if (!note) {
+        res.status(400);
+        throw new Error('Note not found');
+    }
+
+    //now ....send the response...
+
+    res.status(200).json({ msg: 'Note deleted' })
+
+
+
+
+
+});
+
+
+
+//update the specific note.....
+
+
+exports.updateSpecNote = asyncHandler(async (req, res, next) => {
+    //extract the id from the params...
+
+
+    const { id } = req.params;
+
+    const { title, content, date } = req.body;
+
+
+
+    //now update the note....
+
+    await Note.findOneAndUpdate({ _id: id }, {
+        title,
+        content,
+        date
+    })
+
+    res.status(200).json({ msg: 'Note Updated' })
+
+});
+
+
+
+//get Specific note......
+
+
+
+
+exports.getSpecNote = asyncHandler(async (req, res, next) => {
+    //extract the id from the params.....
+
+
+    const { id } = req.params;
 })
