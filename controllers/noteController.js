@@ -12,10 +12,14 @@ exports.getAllNote = asyncHandler(async (req, res, next) => {
 
     const notes = await Note.find({});
 
-    if (!notes) {
+    //check if there is any note or not....
+
+    if (notes.length === 0) {
         res.status(404);
         throw new Error('No notes found!')
     }
+
+    //now send the response....if it has notes....
 
     res.status(200).json(notes)
 
