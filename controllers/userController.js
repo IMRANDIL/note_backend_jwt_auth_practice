@@ -120,7 +120,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
     //now create a jwt token....
     const payload = { id: user._id, name: user.username }
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5d' })
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' })
 
 
 
