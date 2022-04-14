@@ -137,4 +137,15 @@ exports.getSpecNote = asyncHandler(async (req, res, next) => {
 
 
     const { id } = req.params;
+
+
+    const note = await Note.findById(id);
+
+    if (!note) {
+        res.status(400);
+        throw new Error('No note found')
+    }
+
+
+    res.status(200).json(note)
 })
