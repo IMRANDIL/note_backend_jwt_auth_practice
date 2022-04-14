@@ -150,7 +150,7 @@ exports.loginUser = asyncHandler(async (req, res, next) => {
 exports.getMe = asyncHandler(async (req, res) => {
     //get the data from the req.user ...
 
-    // const verifiedUser = await User.findById(req.user.id);...no need to go  to  database..
+    // const verifiedUser = await User.findById(req.user.id);...no need to go  to  database..if you  want further data of user then go  to database..
 
     const { id, name } = req.user;
 
