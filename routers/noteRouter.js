@@ -1,9 +1,14 @@
 const router = require('express').Router();
 
 
-const { getAllNote } = require('../controllers/noteController');
+const { getAllNote, createNote } = require('../controllers/noteController');
 
-router.route('/').get(getAllNote).post();
+const protectRoute = require('../middlewares/protectAuth')
+
+
+
+
+router.route('/').get(protectRoute, getAllNote).post(protectRoute, createNote);
 
 router.route('/:id').get().put().delete()
 
